@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if user %}
+    {% if status == "passed" %}
+      <div class="completed">
+        <h2>🎉 {{ user }}, you have already completed the quiz!</h2>
+        <p>You cannot retake the test again.</p>
+      </div>
+    {% else %}
+      <h2>Welcome {{ user }}!</h2>
+      <p>Total Questions: <strong>{{ total }}</strong></p>
+      <a class="btn" href="{{ url_for('quiz') }}">Start Quiz</a>
+    {% endif %}
+  {% else %}
+    <p class="center-note">Please login or register to start.</p>
+    <p>Total Questions: <strong>{{ total }}</strong></p>
+  {% endif %}
+{% endblock %}
