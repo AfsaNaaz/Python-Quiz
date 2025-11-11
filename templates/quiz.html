@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="{{ url_for('submit') }}" method="post" class="quiz">
+  <div class="timer">⏱️ Time Left: <span id="timer" data-seconds="{{ duration }}"></span></div>
+  <ol class="questions">
+    {% for q in questions %}
+    <li class="q">
+      <div class="qtext">Q{{ loop.index }}. {{ q.text }}</div>
+      <div class="options">
+        {% for opt in q.options %}
+        <label class="opt">
+          <input type="radio" name="q{{ q.id }}" value="{{ loop.index0 }}">
+          <span>{{ opt }}</span>
+        </label>
+        {% endfor %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+  <button type="submit" class="btn">Submit</button>
+</form>
+
+<script>
+let seconds = parseInt(document.getElementById("timer").dataset.seconds);
+function tick() {
+  if (seconds <= 0) { document.forms[0].submit(); return; }
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  const el = document.getElementById("timer");
+  el.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  if (seconds <= 60) el.style.color = "#ff6b6b";
+  seconds--; setTimeout(tick, 1000);
+}
+tick();
+</script>
+{% endblock %}
