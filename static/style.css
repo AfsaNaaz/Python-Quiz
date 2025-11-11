@@ -1,0 +1,63 @@
+:root { --bg:#0b0d10; --card:#12151a; --muted:#97a0af; --ink:#e6edf3;
+  --accent:#8b5cf6; --ok:#3ddc97; --danger:#ff6b6b; }
+
+*{box-sizing:border-box}
+body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial;
+  color:var(--ink); background:radial-gradient(1200px 600px at 10% -10%,#10141a,var(--bg)); }
+.container{max-width:900px;margin:24px auto;padding:0 16px}
+.card{background:var(--card);border:1px solid #1c2230;border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.muted{color:var(--muted)} .center-note{color:var(--muted);margin-bottom:10px;text-align:center}
+
+/* Header */
+.header-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;position:relative}
+.logo h1{margin:0;font-size:26px;font-weight:800;color:var(--accent)} .title{color:var(--ink)}
+.nav-links{position:absolute;right:20px;top:10px;display:flex;gap:12px;align-items:center}
+.welcome{margin-right:8px;color:var(--muted);font-size:15px}
+
+/* Buttons */
+.btn{display:inline-block;padding:12px 16px;border-radius:10px;border:1px solid #263042;background:#0f131a;color:var(--ink);text-decoration:none;cursor:pointer;transition:.2s}
+.btn:hover{border-color:var(--accent);transform:scale(1.05)}
+.btn.small{padding:8px 14px;font-size:14px;border-radius:8px}
+.btn.small.login{color:#52a8ff;border-color:#52a8ff} .btn.small.register{color:#3ddc97;border-color:#3ddc97}
+.btn.small.logout{color:#ff6b6b;border-color:#ff6b6b} .btn.small.logout:hover{background:rgba(255,107,107,.1)}
+.btn.full{width:100%;margin-top:10px}
+
+/* Flash boxes */
+.flash-box{margin-bottom:16px}
+.flash{padding:10px 14px;border-radius:8px;font-size:15px;margin-bottom:8px}
+.flash.ok{background:rgba(61,220,151,.1);border:1px solid var(--ok);color:var(--ok)}
+.flash.error{background:rgba(255,107,107,.1);border:1px solid var(--danger);color:var(--danger)}
+
+/* Quiz */
+.questions{padding-left:18px} .q{margin-bottom:12px}
+.qtext{margin-bottom:6px;color:#52a8ff}
+.options{display:grid;gap:8px} .opt{display:flex;gap:8px;align-items:center}
+.timer{margin-bottom:12px;font-weight:700}
+
+/* Result */
+.score{text-align:center;font-size:18px;margin-bottom:12px}
+.pass{color:var(--ok);text-align:center;font-weight:700}
+.fail{color:var(--danger);text-align:center;font-weight:700}
+
+/* Review answers */
+.answers{padding-left:20px;margin-top:16px}
+.answers .qtext{margin-bottom:4px;font-weight:600;color:var(--accent)}
+.answers ul{margin:6px 0 14px 18px;list-style:none;padding:0}
+.answers li.opt{margin-bottom:3px}
+.answers .correct{color:var(--ok)} .answers .wrong{color:var(--danger)}
+.badge{font-size:11px;border:1px solid #2a3345;padding:2px 6px;border-radius:999px;margin-left:6px}
+.badge.good{border-color:var(--ok);color:var(--ok)} .badge.bad{border-color:var(--danger);color:var(--danger)}
+
+/* Centered forms */
+.form-wrapper{display:flex;justify-content:center;align-items:center;height:75vh}
+.form-card{background:var(--card);border:1px solid #1c2230;border-radius:14px;padding:32px 40px;width:330px;box-shadow:0 8px 25px rgba(0,0,0,.35);text-align:center}
+.form-card h2{margin-bottom:20px;color:var(--ink);font-weight:700}
+.form{display:flex;flex-direction:column;gap:14px}
+.form label{text-align:left;font-size:14px;color:var(--muted)}
+.form input{padding:9px 10px;border-radius:8px;border:1px solid #2a3345;background:#0f131a;color:var(--ink);outline:none}
+.form input:focus{border-color:var(--accent)}
+
+/* Completed section */
+.completed{text-align:center}
+.completed h2{color:var(--ok);margin-bottom:6px}
+.completed p{color:var(--muted)}
