@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: python-quiz-sqlite
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: SECRET_KEY
+        value: afsa_quiz_secret_online
+      - key: DATA_DIR
+        value: /tmp
