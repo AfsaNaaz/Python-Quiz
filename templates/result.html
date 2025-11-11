@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="score">Your Score: <strong>{{ score }}/{{ total }}</strong></div>
+
+  {% if passed %}
+    <div class="pass">
+      <p>🎉 Congratulations! You passed the Python Quiz.</p>
+      <p>Thank you for attending this quiz!</p>
+    </div>
+  {% else %}
+    <div class="fail">
+      <p>😞 You scored below {{ pass_mark }}.</p>
+      <a href="{{ url_for('restart') }}" class="btn">Retry Quiz</a>
+    </div>
+  {% endif %}
+
+  <hr style="margin: 20px 0; border-color: #263042;">
+
+  <h3>🔍 Review Answers</h3>
+  <ol class="answers">
+    {% for q in questions %}
+    <li class="ans">
+      <div class="qtext">Q{{ loop.index }}. {{ q.text }}</div>
+      <ul>
+        {% for opt in q.options %}
+          {% set idx = loop.index0 %}
+          {% set is_correct = (idx == q.answer) %}
+          {% set chosen = (submitted[q.id] == idx) %}
+          <li class="opt{% if is_correct %} correct{% endif %}{% if chosen and not is_correct %} wrong{% endif %}">
+            {{ opt }}
+            {% if is_correct %}
+              <span class="badge good">Correct Answer</span>
+            {% elif chosen %}
+              <span class="badge bad">Your Choice</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ol>
+{% endblock %}
